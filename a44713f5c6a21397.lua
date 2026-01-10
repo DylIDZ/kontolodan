@@ -2694,13 +2694,15 @@ local function vu473(p442)
                             if v465 then
                                 local v466 = v463:FindFirstChild('Head')
 
-                                if v466 then
-                                    v466.Parent = nil
-
-                                    task.wait(0.1)
-
-                                    v466.CFrame = v465.CFrame
-                                    v466.Parent = v463
+                                if v466 and v463 then
+                                    pcall(function()
+                                        v466.Parent = nil
+                                        task.wait(0.1)
+                                        if v466 and v463 and v465 then
+                                            v466.CFrame = v465.CFrame
+                                            v466.Parent = v463
+                                        end
+                                    end)
                                 end
 
                                 local v467, v468, v469 = pairs(v463:GetDescendants())
